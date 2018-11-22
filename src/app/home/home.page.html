@@ -4,13 +4,13 @@
       LFQ
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="chooseSync()">
         SYNC
       </ion-button>
-      <ion-button>
+      <ion-button (click)="chooseBackground($event)">
         BACKGROUND
       </ion-button>
-      <ion-button>
+      <ion-button (click)="chooseButton()">
         BUTTON
       </ion-button>
     </ion-buttons>
@@ -18,73 +18,75 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-row>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Acrostics</button>
+  <ion-row style="background-color:white">
+    <ion-col col-4 style="text-align:center">
+      EDIT
     </ion-col>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Acrostics Tables</button>
+    <ion-col col-4 style="text-align:center">
+      SHOW
     </ion-col>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Major System</button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Alphabet</button>
-    </ion-col>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Show New Words</button>
-    </ion-col>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Celebrity NUmbers</button>
+    <ion-col col-4 style="text-align:center">
+      TOOLS
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Dictionary</button>
+      <ion-button class="button button-block" (click)="goAcrostics()">Acrostics</ion-button>
     </ion-col>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Mnemonics</button>
+      <ion-button class="button button-block" (click)="goAcrosticsTables()">Acrostics Tables</ion-button>
     </ion-col>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Anagram Generator</button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Events</button>
-    </ion-col>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Numbers</button>
-    </ion-col>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Mnemonic Generator</button>
+      <ion-button class="button button-block" (click)="goMajorSystem()">Major System</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Mnemonics</button>
+      <ion-button class="button button-block" (click)="goAlphabet()">Alphabet</ion-button>
     </ion-col>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Timeline</button>
+      <ion-button class="button button-block" (click)="goNewWords()">Show New Words</ion-button>
     </ion-col>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Dictionary</button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <button class="button button-block button-assertive">Numbers</button>
-    </ion-col>
-    <ion-col col-4>
-    </ion-col>
-    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goCelebrityNumbers()">Celebrity Numbers</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Tables</button>
+      <ion-button class="button button-block" (click)="goDictionary()">Dictionary</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goMnemonics()">Mnemonics</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goAnagramGenerator()">Anagram Generator</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goEvents()">Events</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goNumbers()">Numbers</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goMnemonicGenerator()">Mnemonic Generator</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goShowMnemonics()">Show Mnemonics</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goTimeline()">Timeline</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goShowDictionary()">Show Dictionary</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goShowNumbers()">Numbers</ion-button>
     </ion-col>
     <ion-col col-4>
     </ion-col>
@@ -93,12 +95,21 @@
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Edit New Words</button>
+      <ion-button class="button button-block" (click)="goTables()">Tables</ion-button>
     </ion-col>
     <ion-col col-4>
     </ion-col>
     <ion-col col-4>
-      <button class="button button-block button-assertive">Help Menu</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goEditNewWords()">Edit New Words</ion-button>
+    </ion-col>
+    <ion-col col-4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" (click)="goHelp()">Help Menu</ion-button>
     </ion-col>
   </ion-row>
 </ion-content>
