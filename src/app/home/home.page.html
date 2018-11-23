@@ -4,20 +4,21 @@
       LFQ
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="chooseSync()">
+      <ion-button (click)="chooseSync($event)">
         SYNC
       </ion-button>
       <ion-button (click)="chooseBackground($event)">
         BACKGROUND
       </ion-button>
-      <ion-button (click)="chooseButton()">
+      <ion-button (click)="chooseButton($event)">
         BUTTON
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <div #homePageContent>
   <ion-row style="background-color:white">
     <ion-col col-4 style="text-align:center">
       EDIT
@@ -31,71 +32,62 @@
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goAcrostics()">Acrostics</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goAcrostics()">Acrostics</ion-button>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goAcrosticsTables()">Acrostics Tables</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goAcrosticsTables()">Acrostics Tables</ion-button>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goMajorSystem()">Major System</ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goAlphabet()">Alphabet</ion-button>
-    </ion-col>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goNewWords()">Show New Words</ion-button>
-    </ion-col>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goCelebrityNumbers()">Celebrity Numbers</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goMajorSystem()">Major System</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goDictionary()">Dictionary</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goAlphabet()">Alphabet</ion-button>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goMnemonics()">Mnemonics</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goNewWords()">New Words</ion-button>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goAnagramGenerator()">Anagram Generator</ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goEvents()">Events</ion-button>
-    </ion-col>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goNumbers()">Numbers</ion-button>
-    </ion-col>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goMnemonicGenerator()">Mnemonic Generator</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goCelebrityNumbers()">Celebrity Numbers</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goShowMnemonics()">Show Mnemonics</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goDictionary()">Dictionary</ion-button>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goTimeline()">Timeline</ion-button>
+      <ion-button class="button button-block"color="{{home.color}}" (click)="goMnemonics()">Mnemonics</ion-button>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goShowDictionary()">Show Dictionary</ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-4>
-      <ion-button class="button button-block" (click)="goShowNumbers()">Numbers</ion-button>
-    </ion-col>
-    <ion-col col-4>
-    </ion-col>
-    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goAnagramGenerator()">Anagram Generator</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goTables()">Tables</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goEvents()">Events</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goNumbers()">Numbers</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goMnemonicGenerator()">Mnemonic Generator</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goShowMnemonics()">Mnemonics</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goTimeline()">Timeline</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goShowDictionary()">Dictionary</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goShowNumbers()">Numbers</ion-button>
     </ion-col>
     <ion-col col-4>
     </ion-col>
@@ -104,12 +96,22 @@
   </ion-row>
   <ion-row>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goEditNewWords()">Edit New Words</ion-button>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goTables()">Tables</ion-button>
     </ion-col>
     <ion-col col-4>
     </ion-col>
     <ion-col col-4>
-      <ion-button class="button button-block" (click)="goHelp()">Help Menu</ion-button>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goEditNewWords()">Edit New Words</ion-button>
+    </ion-col>
+    <ion-col col-4>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{home.color}}" (click)="goHelp()">Help Menu</ion-button>
+    </ion-col>
+  </ion-row>
+  </div>
 </ion-content>

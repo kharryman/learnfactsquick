@@ -1,0 +1,18 @@
+<ion-list *ngIf="message=='BACKGROUND'">
+  <ion-item *ngFor="let item of colors" (click)="changeBackgroundColor(item)">
+     {{item.color}}
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="message=='BUTTON'">
+  <ion-item *ngFor="let item of buttons" (click)="changeButtonColor(item)">
+     {{item.color}}
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="message=='SYNC'">
+  <ion-radio (click)="sync(false)">
+     AUTO SYNC OFF
+  </ion-radio>
+  <ion-radio (click)="sync(true)">
+     AUTO SYNC ON
+  </ion-radio>
+</ion-list>

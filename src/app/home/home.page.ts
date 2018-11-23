@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../popover/popover.component';
+import { ShareService} from '../services/share.service';
 
-@Component({
-  template: `This is a popover`
-})
-export class MyPopover{}
 
 @Component({
   selector: 'app-home',
@@ -12,78 +10,93 @@ export class MyPopover{}
   styleUrls: ['home.page.scss'],
 })
 
-export class HomePage {
-  constructor(private nav: NavController, public popoverCtrl: PopoverController){
+export class HomePage implements OnInit, AfterViewInit{
+  @ViewChild('homePageContent') homePageContent:ElementRef;
+  home:any;
 
+  constructor(private nav: NavController, public popoverCtrl: PopoverController, public service:ShareService){
   }
-  chooseSync(){
+
+  ngOnInit() {
+    this.home = {color:"secondary"};
+  }
+  ngAfterViewInit() {
+    //this.homePageContent.nativeElement.style.backgroundColor = "#FF0000";
+  }
+  chooseSync(event: Event){
     console.log("chooseSync called.");
-  }
-  chooseBackground(event: Event){
-    console.log("chooseBackground called. event=" + JSON.stringify(event));
-    let popover =this.popoverCtrl.create(MyPopover);
-    this.present(popover, {
-      ev: Event
-    });
-  }
-  chooseButton(){
-    console.log("chooseButton called.");
-  }
-  goAcrostics(){
-    console.log("goAcrostics called.");
-  }
-  goAcrosticsTables(){
-    console.log("goAcrosticsTables called.");
-  }
-  goAlphabet(){
-    console.log("goAlphabet called.");
-  }
-  goMajorSystem(){
-    console.log("goMajorSystem called.");
-  }
-  goNewWords(){
-    console.log("goNewWords called.");
-  }
-  goCelebrityNumbers(){
-    console.log("goCelebrityNumbers called.");
-  }
-  goDictionary(){
-    console.log("goDictionary called.");
-  }
-  goMnemonics(){
-    console.log("goMnemonics called.");
-  }
-  goAnagramGenerator(){
-    console.log("goAnagramGenerator called.");
-  }
-  goEvents(){
-    console.log("goEvents called.");
-  }
-  goNumbers(){
-    console.log("goNumbers called.");
-  }
-  goMnemonicGenerator(){
-    console.log("goMnemonicGenerator called.");
-  }
-  goShowMnemonics(){
-    console.log("goShowMnemonics called.");
-  }
-  goTimeline(){
-    console.log("goTimeline called.");
-  }
-  goShowDictionary(){
-    console.log("goShowDictionary called.");
-  }
-  goShowNumbers(){
-    console.log("goShowNumbers called.");
-  }
-  goTables(){
-    console.log("goTables called.");
-  }
-  goEditNewWords(){
-    console.log("goEditNewWords called.");
-  }
-  goHelp(){
-    console.log("goHelp called.");
-  }
-}
+    return this.popoverCtrl.create({ component: PopoverComponent, event: event,
+      componentProps: {homePageContent: this.homePageContent, buttonColor: this.home, message: 'SYNC', popoverController: this.popoverCtrl} })
+      .then(popover => popover.present());
+    }
+    chooseBackground(event: Event): Promise<void> {
+      console.log("chooseBackground called. event=" + JSON.stringify(event));
+      return this.popoverCtrl.create({ component: PopoverComponent, event: event,
+        componentProps: {homePageContent: this.homePageContent, message: 'BACKGROUND', popoverController: this.popoverCtrl} })
+        .then(popover => popover.present());
+      }
+
+      chooseButton(event: Event){
+        console.log("chooseButton called.");
+        return this.popoverCtrl.create({ component: PopoverComponent, event: event,
+          componentProps: {homePageContent: this.homePageContent, message: 'BUTTON', popoverController: this.popoverCtrl} })
+          .then(popover => popover.present());
+        }
+        goAcrostics(){
+          console.log("goAcrostics called.");
+        }
+        goAcrosticsTables(){
+          console.log("goAcrosticsTables called.");
+        }
+        goAlphabet(){
+          console.log("goAlphabet called.");
+        }
+        goMajorSystem(){
+          console.log("goMajorSystem called.");
+        }
+        goNewWords(){
+          console.log("goNewWords called.");
+        }
+        goCelebrityNumbers(){
+          console.log("goCelebrityNumbers called.");
+        }
+        goDictionary(){
+          console.log("goDictionary called.");
+        }
+        goMnemonics(){
+          console.log("goMnemonics called.");
+        }
+        goAnagramGenerator(){
+          console.log("goAnagramGenerator called.");
+        }
+        goEvents(){
+          console.log("goEvents called.");
+        }
+        goNumbers(){
+          console.log("goNumbers called.");
+        }
+        goMnemonicGenerator(){
+          console.log("goMnemonicGenerator called.");
+        }
+        goShowMnemonics(){
+          console.log("goShowMnemonics called.");
+        }
+        goTimeline(){
+          console.log("goTimeline called.");
+        }
+        goShowDictionary(){
+          console.log("goShowDictionary called.");
+        }
+        goShowNumbers(){
+          console.log("goShowNumbers called.");
+        }
+        goTables(){
+          console.log("goTables called.");
+        }
+        goEditNewWords(){
+          console.log("goEditNewWords called.");
+        }
+        goHelp(){
+          console.log("goHelp called.");
+        }
+      }
