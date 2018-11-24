@@ -1,9 +1,155 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Help</ion-title>
+    <ion-title>Help Menu</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="chooseSync($event)">
+        SYNC
+      </ion-button>
+      <ion-button (click)="goBack($event)">
+        BACK?
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
-</ion-content>
+  <ion-list *ngFor="let item of menus">
+    <ion-item (click)="expand(item)">
+      <span *ngIf="item.isShow">-</span><span *ngIf="!item.isShow">+</span>
+      {{item.name}}
+    </ion-item>
+    <ion-list class="margin-left" *ngIf="item.isShow && item.name=='GENERAL'">
+      <ion-item >
+        <b>Acrostics:</b> Like acronyms of words, but give word meanings to help you remember.
+      </ion-item>
+      <ion-item >
+        <b>Anagrams:</b> A word combination of the first letters of a list of words you want to remember.
+      </ion-item>
+      <ion-item >
+        <b>Celebrity Numbers:</b> A way to remember a sequence of 2 numbers by having letters representing numbers a=1,b=2...i=9,j=10 and having those letters represent the first letters of a celebrity's first and last names.
+      </ion-item>
+      <ion-item >
+        <b>Mnemonics:</b> A list remembered as a sentence where, the first letters of the words of the sentence are the same as the first letters of the words to remember.
+      </ion-item >
+      <ion-item >
+        <b>Peglist:</b> A list remember by associating the index of the list(a number) with a word associated with the number(usual using major system) to help you remember.
+      </ion-item >
+    </ion-list>
+    <div *ngIf="item.isShow && item.name=='EDIT'">
+      <ion-list class="margin-left" *ngFor="let edit of item.edits">
+        <ion-item (click)="expand(edit)">
+          <span *ngIf="edit.isShow">-</span><span *ngIf="!edit.isShow">+</span>
+          {{edit.name}}
+        </ion-item>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT ACROSTICS'">
+          <ion-item><b>Vocabulary switch:</b> Switches between whatever table is currently selected and the general vocabulary table</ion-item>
+          <ion-item><b>Use Dictionary:</b> Uses dictionary to select words you can input yourself as acrostics.</ion-item>
+          <ion-item><b>Use All Acrostics:</b> Searches all acrostics tables to find a words(to help review a word)</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT ALPHABET'">
+          <ion-item><b>Select a table and a letter(A to Z) to find words beginning with that letter associated with the table or category.</b>(helps you form acrostics)</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT DICTIONARY'">
+          <ion-item><b>Helps you find and input words.</b>(includes part of speech)<br /></ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT EVENTS'">
+          <ion-item><b>By Date?:</b>Finds all events of a particular date.</ion-item>
+          <ion-item><b>By Year?:</b>Finds all events of a particular year.</ion-item>
+          <ion-item><b>SHARED(CHECK)/USER TABLE?:</b>If checked, uses the shared events table that everyone uses. If not checked, it uses your own events table, but yo need to be logged in.</ion-item>
+          <ion-item><b>Historical/Personal?:</b>Shows either historical events or personal events of a users table. Must be logged in.</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT MNEMONICS'">
+          <ion-item><b>Standard:</b>Uses standard first letters of a sentence mnemonic notation.</ion-item>
+          <ion-item><b>Number:</b>Input major words as mnemonics.</ion-item>
+          <ion-item><b>Anagram:</b>Input a mnemonic word as an acronym(anagram) to remember a set of words.</ion-item>
+          <ion-item><b>Peglist:</b>Uses Peglist(using major words)system to remember a list of words.</ion-item>
+          <ion-item><b>Insert linebreaks:</b>If checked, enters a new line(more readable) for each mnemonic.</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT NUMBERS'">
+          <ion-item><b>Shared:</b>Uses a shared number table(global number table).</ion-item>
+          <ion-item><b>User:</b>Uses the user number table. Must be logged in.</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT TABLES'">
+          <ion-item><b>Data Type:</b>Select the kind of data to be input(TINYINT=whole numbers,TINYTEXT is short text, LONGTEXT is long text.</ion-item>
+          <ion-item><b>Change name:</b>Only changes name of table.</ion-item>
+          <ion-item><b>Include Mnemonics:</b>Inserts a mnemonics and a peglist column into the table.</ion-item>
+          <ion-item><b>Clear Table:</b>Clears all inputted values.</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="edit.isShow && edit.name=='EDIT NEWWORDS'">
+          <ion-item><b>Change Date:</b>Go back a number of review days to see words from last review.</ion-item>
+          <ion-item><b>How Many Words:</b>Select how many words you want to review for this day.</ion-item>
+          <ion-item><b>Change Review Times:</b>Input new times(how many days between) for each review.</ion-item>
+          <ion-item><b>ALL 1 TABLE:</b>Use words automatically from same table.</ion-item>
+        </ion-list>
+      </ion-list>
+    </div>
+    <div *ngIf="item.isShow && item.name=='SHOW'">
+      <ion-list class="margin-left" *ngFor="let show of item.shows">
+        <ion-item (click)="expand(show)">
+          <span *ngIf="show.isShow">-</span><span *ngIf="!show.isShow">+</span>
+          {{show.name}}
+        </ion-item>
+        <ion-list class="margin-left" *ngIf="show.isShow && show.name=='ACROSTIC TABLES'">
+          <ion-item><b>Check boxes(in slide pane):</b>Use to select which records you want when you show the table.</ion-item>
+          <ion-item><b>Read?:</b>If checked, allows you to read the information by highlighting each setence of a record by tapping on its information cell.</ion-item>
+          <ion-item><b>Show all categories:</b>Shows category values along with the name in the name cell.</ion-item>
+          <ion-item><b>How many so far?:</b>Shows numbers of completed(entered) acrostics for each table.</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="show.isShow && show.name=='SHOW NEWWORDS'">
+          <ion-item><b>#Days Before?:</b>Select how many days back you want to review(if you fall behind by not reviewing everyday).</ion-item>
+          <ion-item><b>+Information(-Information):</b>Click to expand and allow to edit information for each word(defaulted to be collapsed, because information uses a lot of space).</ion-item>
+        </ion-list>
+        <ion-list class="margin-left" *ngIf="show.isShow && show.name=='SHOW MNEMONICS'">
+          <ion-item><b>Click Mnemonic Table to expand or collapse mnemonics of that table.</b></ion-item>
+          </ion-list>
+          <ion-list class="margin-left" *ngIf="show.isShow && show.name=='SHOW NUMBERS'">
+            <ion-item><b>Get Shared Numbers:</b>Use to get shared(global number table) everyone uses with common numbers.</ion-item>
+            <ion-item><b>Get Users Numbers:</b>Use to get user numbers. Must be logged in.</ion-item>
+          </ion-list>
+          <ion-list class="margin-left" *ngIf="show.isShow && show.name=='TIMELINE'">
+            <ion-item><b>COMBINE YEAR AND DATE?</b>Check to combine year and date (YYYYMMDD) to search for single major words of an event date.</ion-item>
+            <ion-item><b>GET(SHOW)?:</b>If checked, gets both events to edit, and saved major words. If not checked only shows saved major words.</ion-item>
+            <ion-item><b>SHARED(USER)EVENTS?:</b>If checked, shows events from common(complete) events table.(all historical events). If not checked, shows events of users event table, but must be logged in.</ion-item>
+            <ion-item><b>GET DATE EVENTS?:</b>Gets all events of a particular date.</ion-item>
+            <ion-item><b>GET YEAR EVENTS?:</b>Gets all events of a particular year.</ion-item>
+            <ion-item><b>GET ALL EVENTS?:</b>Gets all saved events of the shared events table.</ion-item>
+          </ion-list>
+        </ion-list>
+      </div>
+      <div *ngIf="item.isShow && item.name=='TOOLS'">
+        <ion-list class="margin-left" *ngFor="let tool of item.tools">
+          <ion-item (click)="expand(tool)">
+            <span *ngIf="tool.isShow">-</span><span *ngIf="!tool.isShow">+</span>
+            {{tool.name}}
+          </ion-item>
+          <ion-list class="margin-left" *ngIf="tool.isShow && tool.name=='MAJOR SYSTEM'">
+            <ion-item><b>Use beginning letters?:</b>input a beginning letter you want your major word to start with first, then numbers(use to help find major words to use when forming your acrostics of a word.</ion-item>
+            <ion-item><b>find words for each letter?:</b>for inputting more than one beginning letter(for example, your entire word) you want your major word to start with. Enter all these first followed by the numbers(use togther with 'Use beginning letters?').</ion-item>
+          </ion-list>
+          <ion-list class="margin-left" *ngIf="tool.isShow && tool.name=='CELEBRITY NUMBERS'">
+            <ion-item><b>STUDY ENTIRE LIST?:</b>Check if you want to see all celebrities representing all numbers from 00 to 99.</ion-item>
+            <ion-item><b>ABREVIATE RESULTS?:</b>Check if you only want names(not associated information).</ion-item>
+          </ion-list>
+          <ion-list class="margin-left" *ngIf="tool.isShow && tool.name=='ANAGRAMS'">
+            <ion-item><b>Find all combinations?:</b>Check to find all anagrams, basically.</ion-item>
+            <ion-item><b>Treat consonants like vowels?:</b>Skip by consonants if too many consonants.</ion-item>
+            <ion-item><b>Find a limited number of letters?:</b>Check if you only need some letters of the anagram, or if you can't find any anagrams.</ion-item>
+          </ion-list>
+          <ion-list class="margin-left" *ngIf="tool.isShow && tool.name=='MNEMONIC GENERATOR'">
+            <ion-item><b>Choose Theme?:</b>Select the kinds of nouns you want associated with your mnemonic.</ion-item>
+            <ion-item><b>Choose Adjective Type?:</b>Select the kinds of adjectives you want associated with your mnemonic.</ion-item>
+          </ion-list>
+          <ion-list class="margin-left" *ngIf="tool.isShow && tool.name=='DICTIONARY'">
+            <ion-item><b>Find one word?:</b>Check if you want to search for only one word. '_' can select one character and '%' can select 1 or more characters.<br /></ion-item>
+          </ion-list>
+        </ion-list>
+      </div>
+      <div *ngIf="item.isShow && item.name=='USERS'">
+        <ion-list class="margin-left">
+          <ion-item><b>DELETE USER'S REVIEWED TABLES/WORDS:</b>Use for clearing words you reviewed in the past that you want to review again.</ion-item>
+          <ion-item><b>ADD TO USER'S REVIEWED TABLES/WORDS:</b>Use to add words or tables, you already know before using the system.</ion-item>
+          <ion-item><b>COMPLETE WORDS LIST:</b>Shows you all the words that are ready to be reviewed because they have complete information and acrostics.</ion-item>
+        </ion-list>
+      </div>
+    </ion-list>
+  </ion-content>

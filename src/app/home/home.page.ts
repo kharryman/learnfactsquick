@@ -14,22 +14,22 @@ import { Storage } from '@ionic/storage';
 export class HomePage implements OnInit, AfterViewInit{
   @ViewChild('homePageContent') homePageContent:ElementRef;
   home:any;
-  myStorage:Storage;
+  //myStorage:Storage;
   myShared:any;
 
   constructor(public shared: ShareService, private nav: NavController, public popoverCtrl: PopoverController, public service:ShareService, public storage: Storage){
-    this.myStorage = storage;
-    this.myShared = shared;
+    //this.myStorage = storage;
+    //this.myShared = shared;
   }
 
   ngOnInit() {
-    if (this.myStorage.get("button_color") == null){
-       console.log("SETTING COLOR TO DEFAULT SECONDARY.")
-       this.home = {color:"secondary"};
-    }else{
-      this.home = {color:this.myStorage.get("button_color")};
-    }
-    this.myShared.setButtonColor(this.home);
+    //if (this.myStorage.get("button_color") == null){
+    //   console.log("SETTING COLOR TO DEFAULT SECONDARY.")
+    this.home = {color:"secondary"};
+    //}else{
+    //  this.home = {color:this.myStorage.get("button_color")};
+    //}
+    //this.myShared.setButtonColor(this.home);
   }
   ngAfterViewInit() {
     //this.homePageContent.nativeElement.style.backgroundColor = "#FF0000";
@@ -54,60 +54,80 @@ export class HomePage implements OnInit, AfterViewInit{
           .then(popover => popover.present());
         }
         goAcrostics(){
+          this.nav.navigateRoot('Acrostics');
           console.log("goAcrostics called.");
+          this.nav
         }
         goAcrosticsTables(){
           console.log("goAcrosticsTables called.");
+          this.nav.navigateRoot('AcrosticsTables');
         }
         goAlphabet(){
           console.log("goAlphabet called.");
+          this.nav.navigateRoot('Alphabet');
         }
         goMajorSystem(){
           console.log("goMajorSystem called.");
+          this.nav.navigateRoot('MajorSystem');
         }
         goNewWords(){
           console.log("goNewWords called.");
+          this.nav.navigateRoot('ShowNewWords');
         }
         goCelebrityNumbers(){
           console.log("goCelebrityNumbers called.");
+          this.nav.navigateRoot('CelebrityNumbers');
         }
         goDictionary(){
           console.log("goDictionary called.");
+          this.nav.navigateRoot('Dictionary');
         }
         goMnemonics(){
           console.log("goMnemonics called.");
+          this.nav.navigateRoot('Mnemonics');
         }
         goAnagramGenerator(){
           console.log("goAnagramGenerator called.");
+          this.nav.navigateRoot('AnagramGenerator');
         }
         goEvents(){
           console.log("goEvents called.");
+          this.nav.navigateRoot('Events');
         }
         goNumbers(){
           console.log("goNumbers called.");
+          this.nav.navigateRoot('Numbers');
         }
         goMnemonicGenerator(){
           console.log("goMnemonicGenerator called.");
+          this.nav.navigateRoot('MnemonicGenerator');
         }
         goShowMnemonics(){
           console.log("goShowMnemonics called.");
+          this.nav.navigateRoot('ShowMnemonics');
         }
         goTimeline(){
           console.log("goTimeline called.");
+          this.nav.navigateRoot('Timeline');
         }
         goShowDictionary(){
           console.log("goShowDictionary called.");
+          this.nav.navigateRoot('ShowDictionary');
         }
         goShowNumbers(){
           console.log("goShowNumbers called.");
+          this.nav.navigateRoot('ShowNumbers');
         }
         goTables(){
           console.log("goTables called.");
+          this.nav.navigateRoot('Tables');
         }
         goEditNewWords(){
           console.log("goEditNewWords called.");
+          this.nav.navigateRoot('EditNewWords');
         }
         goHelp(){
           console.log("goHelp called.");
+          this.nav.navigateRoot('Help');
         }
       }

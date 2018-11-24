@@ -21,17 +21,17 @@ export class PopoverComponent implements OnInit {
    autoSync:any;
    isAutoSync:Boolean;
    myStorage:Storage;
-   myShared:any;
+   //myShared:any;
 
     constructor(public shared: ShareService, public navParams: NavParams, storage: Storage) {
       //this.formGroup = autoSyncForm;
       this.myStorage = storage;
-      this.myShared = shared;
-      this.buttonColor = this.myShared.getButtonColor();
+      //this.myShared = shared;
+      //this.buttonColor = this.myShared.getButtonColor();
       this.homePageContent = navParams.get('homePageContent');
       console.log("Passed homePageContent=" + JSON.stringify(this.homePageContent));
       this.message = navParams.get('message');
-      this.buttonColor = navParams.get("buttonColor");
+      //this.buttonColor = navParams.get("buttonColor");
       this.popoverCtrl = navParams.get('popoverController');
     }
 
@@ -47,8 +47,8 @@ export class PopoverComponent implements OnInit {
     changeButtonColor(item){
       console.log("changeButtonColor called item=" + JSON.stringify(item));
       this.buttonColor = item.value;
-      this.myShared.setButtonColor(this.buttonColor);
-      this.myStorage.set("button_color", item.value);
+      //this.myShared.setButtonColor(this.buttonColor);
+      //this.myStorage.set("button_color", item.value);
 
     }
 
