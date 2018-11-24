@@ -7,7 +7,7 @@ import { NavController} from '@ionic/angular';
   styleUrls: ['./celebrity-numbers.page.scss'],
 })
 export class CelebrityNumbersPage implements OnInit {
-
+  inputNumbers:any;
   constructor(private nav: NavController) { }
 
   goBack(event: Event){
