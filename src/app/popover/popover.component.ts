@@ -1,5 +1,9 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { NavController, NavParams, PopoverController } from '@ionic/angular';
+import { FormsModule, FormGroup }   from '@angular/forms';
+import { Storage } from '@ionic/storage';
+import { ShareService} from '../services/share.service';
+
 
 @Component({
   selector: 'app-popover',
@@ -14,8 +18,16 @@ export class PopoverComponent implements OnInit {
    message = '';
    buttonColor:any;
    homePageContent:ElementRef;
+   autoSync:any;
+   isAutoSync:Boolean;
+   myStorage:Storage;
+   myShared:any;
 
-    constructor(public navParams: NavParams) {
+    constructor(public shared: ShareService, public navParams: NavParams, storage: Storage) {
+      //this.formGroup = autoSyncForm;
+      this.myStorage = storage;
+      this.myShared = shared;
+      this.buttonColor = this.myShared.getButtonColor();
       this.homePageContent = navParams.get('homePageContent');
       console.log("Passed homePageContent=" + JSON.stringify(this.homePageContent));
       this.message = navParams.get('message');
@@ -35,13 +47,19 @@ export class PopoverComponent implements OnInit {
     changeButtonColor(item){
       console.log("changeButtonColor called item=" + JSON.stringify(item));
       this.buttonColor = item.value;
+      this.myShared.setButtonColor(this.buttonColor);
+      this.myStorage.set("button_color", item.value);
+
     }
 
     sync(isSync){
+      this.isAutoSync = isSync;
       console.log("sync called isSync=" + isSync);
     }
 
   ngOnInit() {
+    this.isAutoSync = false;
+    this.autoSync = "AUTO SYNC OFF";
     this.colors=[
       {color:'BLACK', hex:"#000000"},
       {color:'CYAN', hex:"#00FFFF"},

@@ -1,5 +1,7 @@
 {
   "name": "learnfactsquick",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

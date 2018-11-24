@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, OnInit, AfterViewInit } from '@angula
 import { NavController, PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../popover/popover.component';
 import { ShareService} from '../services/share.service';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -13,12 +14,22 @@ import { ShareService} from '../services/share.service';
 export class HomePage implements OnInit, AfterViewInit{
   @ViewChild('homePageContent') homePageContent:ElementRef;
   home:any;
+  myStorage:Storage;
+  myShared:any;
 
-  constructor(private nav: NavController, public popoverCtrl: PopoverController, public service:ShareService){
+  constructor(public shared: ShareService, private nav: NavController, public popoverCtrl: PopoverController, public service:ShareService, public storage: Storage){
+    this.myStorage = storage;
+    this.myShared = shared;
   }
 
   ngOnInit() {
-    this.home = {color:"secondary"};
+    if (this.myStorage.get("button_color") == null){
+       console.log("SETTING COLOR TO DEFAULT SECONDARY.")
+       this.home = {color:"secondary"};
+    }else{
+      this.home = {color:this.myStorage.get("button_color")};
+    }
+    this.myShared.setButtonColor(this.home);
   }
   ngAfterViewInit() {
     //this.homePageContent.nativeElement.style.backgroundColor = "#FF0000";

@@ -4,11 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ShareService {
-
+  buttonColor:any;
 
   constructor() {
   }
 
-  setData(data:any) {
+  setButtonColor(buttonColor) {
+    this.buttonColor = buttonColor;
   }
+  getButtonColor() {
+    return this.buttonColor;
+  }
+
+
 }
