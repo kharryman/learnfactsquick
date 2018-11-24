@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-show-mnemonics',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowMnemonicsPage implements OnInit {
 
-  constructor() { }
+  constructor(private nav: NavController) { }
+
+  goBack(event: Event){
+    this.nav.navigateRoot('home');
+  }
 
   ngOnInit() {
   }
