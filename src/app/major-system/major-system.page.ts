@@ -24,4 +24,8 @@ export class MajorSystemPage implements OnInit {
     this.major.color = "secondary";
   }
 
+  makeMajor(){
+    console.log("makeMajor called.");
+  }
+
 }

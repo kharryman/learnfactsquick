@@ -10,5 +10,30 @@
 </ion-header>
 
 <ion-content padding>
-
+  <h4>FIND KEYWORDS</h4>
+  <h3>Separate words by spaces. 'AND' means find all words, 'OR', means find 1 of the words, and 'NOR' means find none of the words.</h3>
+  <ion-row>
+    <ion-col col-12>
+      <label>
+        <strong>AND:</strong>
+        <input type="text" placeholder="Enter key words." [(ngModel)]="dictionary.and_input"/>
+      </label>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <label>
+        <strong>OR:</strong>
+        <input type="text" placeholder="Enter key words." [(ngModel)]="dictionary.or_input"/>
+      </label>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <label>
+        <strong>NOR:</strong>
+        <input type="text" placeholder="Enter key words." [(ngModel)]="dictionary.nor_input"/>
+      </label>
+    </ion-col>
+  </ion-row>
 </ion-content>

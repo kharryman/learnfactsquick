@@ -21,7 +21,7 @@
       <div>
         <label>
           <strong>Input (Letter(s)) + Numbers:</strong>
-          <input type="text" placeholder="Enter anagrams" [(ngModel)]="anagrams.input"/>
+          <input type="text" placeholder="Enter numbers" [(ngModel)]="major.input"/>
         </label>
       </div>
     </ion-col>
@@ -35,4 +35,7 @@
       <ion-button class="button button-block" color="{{major.color}}" (click)="makeMajor()">Find Major System Words!</ion-button>
     </ion-col>
   </ion-row>
+  <ion-item>
+   <span #majorResults></span>
+  </ion-item>
 </ion-content>

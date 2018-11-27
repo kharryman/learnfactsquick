@@ -20,7 +20,7 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
-    "@ionic-native/core": "5.0.0-beta.21",
+    "@ionic-native/core": "^4.11.0",
     "@ionic-native/splash-screen": "5.0.0-beta.21",
     "@ionic-native/sqlite": "^4.17.0",
     "@ionic-native/status-bar": "5.0.0-beta.21",
@@ -35,7 +35,7 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sqlite-storage": "^2.5.2",
     "core-js": "^2.5.4",
-    "rxjs": "~6.3.3",
+    "rxjs": "^5.5.11",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
