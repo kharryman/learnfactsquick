@@ -13,19 +13,19 @@
   <ion-item>
     <label>
       <strong>Enter a string of numbers:</strong>
-      <input type="text" placeholder="Enter only digits" name="focus" ([Ng-Model])="celebrityNumbers" />
+      <input type="text" placeholder="Enter only digits" name="celebritiesForm" [(ngModel)]="celebrities.celebrityNumbers"/>
     </label>
   </ion-item>
   <ion-item>
     <label>
       <strong>Study entire list?:</strong>
-      <input type="checkbox"([Ng-Model])="isAllCelebrities" />
+      <input type="checkbox" [(ngModel)]="isAllCelebrities" />
     </label>
   </ion-item>
   <ion-item>
     <label>
       <strong>Abbreviate results?</strong>
-      <input type="checkbox"([Ng-Model])="isAbreviateCelebrities" />
+      <input type="checkbox" [(ngModel)]="isAbreviateCelebrities" />
     </label>
   </ion-item>
   <ion-row>
@@ -33,4 +33,7 @@
       <ion-button class="button button-block" color="{{celebrities.color}}" (click)="getCelebrityNumbers()">Get List Of Celebrities?</ion-button>
     </ion-col>
   </ion-row>
+  <ion-item>
+   <span #celebritiesResults></span>
+  </ion-item>
 </ion-content>

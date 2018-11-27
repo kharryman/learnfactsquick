@@ -10,5 +10,29 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-row>
+    <ion-col col-6>
+      <div>
+        <label>
+          <strong>Use beginning letters?:</strong>
+          <input type="checkbox" [(ngModel)]="major.useBeginningLetters" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <strong>Input (Letter(s)) + Numbers:</strong>
+          <input type="text" placeholder="Enter anagrams" [(ngModel)]="anagrams.input"/>
+        </label>
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div>
+        <label>
+          <strong>Find words for each letter?:</strong>
+          <input type="checkbox" [(ngModel)]="major.isEveryLetter" />
+        </label>
+      </div>
+      <ion-button class="button button-block" color="{{major.color}}" (click)="makeMajor()">Find Major System Words!</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -13,7 +13,7 @@ export class HelpPage implements OnInit {
 
   chooseSync(event: Event){
     console.log("chooseSync called.");
-    return this.popoverCtrl.create({ component: PopoverComponent, event: event,componentProps: {homePageContent: this.homePageContent, buttonColor: this.home, message: 'SYNC', popoverController: this.popoverCtrl} }).then(popover =>popover.present());
+    return this.popoverCtrl.create({ component: PopoverComponent, event: event,componentProps: {homePageContent: null, buttonColor: null, message: 'SYNC', popoverController: this.popoverCtrl} }).then(popover =>popover.present());
   }
   goBack(event: Event){
     this.nav.navigateRoot('home');
@@ -32,26 +32,27 @@ export class HelpPage implements OnInit {
         {name:"EDIT NUMBERS",isShow:false},
         {name:"EDIT TABLES",isShow:false},
         {name:"EDIT NEWWORDS",isShow:false}
-      },
-      {name:"SHOW",isShow:false,
-      shows:[
-        {name:"ACROSTIC TABLES",isShow:false},
-        {name:"SHOW NEWWORDS",isShow:false},
-        {name:"SHOW MNEMONICS",isShow:false},
-        {name:"SHOW NUMBERS",isShow:false},
-        {name:"TIMELINE",isShow:false}
       ]
     },
-    {name:"TOOLS",isShow:false,
-    tools:[
-      {name:"MAJOR SYSTEM",isShow:false},
-      {name:"CELEBRITY NUMBERS",isShow:false},
-      {name:"ANAGRAMS",isShow:false},
-      {name:"MNEMONIC GENERATOR",isShow:false},
-      {name:"DICTIONARY",isShow:false}
+    {name:"SHOW",isShow:false,
+    shows:[
+      {name:"ACROSTIC TABLES",isShow:false},
+      {name:"SHOW NEWWORDS",isShow:false},
+      {name:"SHOW MNEMONICS",isShow:false},
+      {name:"SHOW NUMBERS",isShow:false},
+      {name:"TIMELINE",isShow:false}
     ]
   },
-  {name:"USERS",isShow:false}
+  {name:"TOOLS",isShow:false,
+  tools:[
+    {name:"MAJOR SYSTEM",isShow:false},
+    {name:"CELEBRITY NUMBERS",isShow:false},
+    {name:"ANAGRAMS",isShow:false},
+    {name:"MNEMONIC GENERATOR",isShow:false},
+    {name:"DICTIONARY",isShow:false}
+  ]
+},
+{name:"USERS",isShow:false}
 ];
 }
 
