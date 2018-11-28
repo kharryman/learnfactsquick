@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { NavController} from '@ionic/angular';
 
 @Component({
@@ -8,6 +8,9 @@ import { NavController} from '@ionic/angular';
 })
 export class ShowDictionaryPage implements OnInit {
 
+  showDictionary:any;
+  @ViewChild('showDictionaryResults') showDictionaryResults:ElementRef;
+
   constructor(private nav: NavController) { }
 
   goBack(event: Event){
@@ -15,6 +18,16 @@ export class ShowDictionaryPage implements OnInit {
   }
 
   ngOnInit() {
+    this.showDictionary = {};
+    this.showDictionary.isOneWord=false;
+    this.showDictionary.and_input="";
+    this.showDictionary.or_input="";
+    this.showDictionary.nor_input="";
+    this.showDictionary.color = "secondary";
+  }
+
+  getDictionaryResults(){
+    console.log("getDictionaryResults called");
   }
 
 }

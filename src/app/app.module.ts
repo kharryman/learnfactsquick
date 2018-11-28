@@ -11,6 +11,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { PopoverComponent } from './popover/popover.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
+/*
+import { SQLite, SQLiteDatabaseConfig, SQLiteObject } from '@ionic-native/sqlite';
+
+class SQLiteMock {
+  public create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
+
+    return new Promise((resolve,reject)=>{
+      resolve(new SQLiteObject(new Object()));
+    });
+  }
+}
+*/
+
 
 
 @NgModule({
@@ -21,6 +34,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    //{provide: SQLite, useClass: SQLiteMock}
   ],
   bootstrap: [AppComponent]
 })

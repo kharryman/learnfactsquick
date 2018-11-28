@@ -10,5 +10,24 @@
 </ion-header>
 
 <ion-content padding>
-
+  <h4>Enter your list of wirds(or simply enter the first 5(max) letters of each word) separated by spaces (**CAN ONLY DO 3-50 WORDS): Then press Enter</h4>
+  <input type="text" style="width:100%" placeholder="Enter list of words to remember" [(ngModel)]="mnemonicGenerator.input"/>
+  <ion-row>
+    <ion-col col-4>
+      <ion-button class="button button-block" color="{{mnemonicGenerator.color}}" (click)="makeMnemonics()">Create Mnemonics!</ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-select [(ngModel)]="mnemonicGenerator.theme" placeholder="Choose theme">
+        <ion-select-option *ngFor="let option of mnemonicGenerator.themes" [value]="option">{{option.text}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col col-4>
+      <ion-select [(ngModel)]="mnemonicGenerator.adjective" placeholder="Choose adjective">
+        <ion-select-option *ngFor="let option of mnemonicGenerator.adjectives" [value]="option">{{option.text}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+   <span #mnemonicGeneratorResults></span>
+  </ion-item>
 </ion-content>

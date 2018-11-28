@@ -10,13 +10,13 @@
 </ion-header>
 
 <ion-content padding>
-  <h4>FIND KEYWORDS</h4>
-  <h3>Separate words by spaces. 'AND' means find all words, 'OR', means find 1 of the words, and 'NOR' means find none of the words.</h3>
+  <h4>INPUT SEARCH KEYWORDS</h4>
+  <h3>Separate words by spaces. 'AND' for all keywords to exist in the definition, 'OR' for 1+ of the keywords to exist in the definition , and 'NOR' for none of the keywords to  exist in the definition.</h3>
   <ion-row>
     <ion-col col-12>
       <label>
         <strong>AND:</strong>
-        <input type="text" placeholder="Enter key words." [(ngModel)]="dictionary.and_input"/>
+        <input style="width:100%;" type="text" placeholder="All words to exist" [(ngModel)]="showDictionary.and_input"/>
       </label>
     </ion-col>
   </ion-row>
@@ -24,7 +24,7 @@
     <ion-col col-12>
       <label>
         <strong>OR:</strong>
-        <input type="text" placeholder="Enter key words." [(ngModel)]="dictionary.or_input"/>
+        <input style="width:100%;" type="text" placeholder="Some words to exist" [(ngModel)]="showDictionary.or_input"/>
       </label>
     </ion-col>
   </ion-row>
@@ -32,8 +32,22 @@
     <ion-col col-12>
       <label>
         <strong>NOR:</strong>
-        <input type="text" placeholder="Enter key words." [(ngModel)]="dictionary.nor_input"/>
+        <input style="width:100%;" type="text" placeholder="All Words to not exist" [(ngModel)]="showDictionary.nor_input"/>
       </label>
     </ion-col>
   </ion-row>
+  <ion-row>
+    <ion-col col-6>
+      <ion-button class="button button-block" color="{{showDictionary.color}}" (click)="getDictionaryResults()">Find Words</ion-button>
+    </ion-col>
+    <ion-col col-6>
+      <label>
+        <strong>Find one word?:</strong>
+        <input type="checkbox" [(ngModel)]="showDictionary.isOneWord" />
+      </label>
+    </ion-col>
+  </ion-row>
+  <ion-item>
+    <span #showDictionaryResults></span>
+  </ion-item>
 </ion-content>

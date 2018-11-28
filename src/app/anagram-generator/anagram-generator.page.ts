@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { NavController} from '@ionic/angular';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+//import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @Component({
   selector: 'app-anagram-generator',
@@ -11,7 +11,7 @@ export class AnagramGeneratorPage implements OnInit {
   anagrams:any;
   @ViewChild('anagramResults') anagramResults:ElementRef;
 
-  constructor(private nav: NavController, private sqlite: SQLite) { }
+  constructor(private nav: NavController) { }
 
   goBack(event: Event){
     this.nav.navigateRoot('home');
