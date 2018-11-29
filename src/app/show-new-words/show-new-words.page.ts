@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { NavController} from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,8 @@ import { NavController} from '@ionic/angular';
   styleUrls: ['./show-new-words.page.scss'],
 })
 export class ShowNewWordsPage implements OnInit {
+  showNewWords:any;
+  @ViewChild('showNewWordsResults') showNewWordsResults:ElementRef;
 
   constructor(private nav: NavController) { }
 
@@ -15,6 +17,10 @@ export class ShowNewWordsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.showNewWords = {};
+    this.showNewWords.username = "";
+    this.showNewWords.password = "";
+    this.showNewWords.days_before = 0;
   }
 
 }
