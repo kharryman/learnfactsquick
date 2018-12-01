@@ -21,6 +21,10 @@ export class TimelinePage implements OnInit {
     this.timeline = {};
     this.timeline.username = "";
     this.timeline.password = "";
+    this.timeline.isCombineYearDate = false;
+    this.timeline.isGetShow = false;
+    this.timeline.isShared = false;
+
     this.timeline.completed = [
       {text:"Complete1"},
       {text:"Complete2"},
@@ -31,6 +35,7 @@ export class TimelinePage implements OnInit {
       {text:"Count2"},
       {text:"Count3"}
     ];
+    this.timeline.major_count = this.timeline.major_counts[0];
   }
 
   login(){
