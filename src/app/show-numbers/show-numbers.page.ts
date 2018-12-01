@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NavController} from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,8 @@ import { NavController} from '@ionic/angular';
   styleUrls: ['./show-numbers.page.scss'],
 })
 export class ShowNumbersPage implements OnInit {
+  yourNumbers:any;
+  @ViewChild('yourNumbersLoginStatus') yourNumbersLoginStatus:ElementRef;
 
   constructor(private nav: NavController) { }
 
@@ -15,6 +17,19 @@ export class ShowNumbersPage implements OnInit {
   }
 
   ngOnInit() {
+    this.yourNumbers = {};
+    this.yourNumbers.color = "secondary";
+  }
+  login(){
+    //
+  }
+  logout(){
+    console.log("logout called");
+  }
+
+  getNumbers(){
+    console.log("getNumbers called");
+    console.log("getNumbers isShared=" + this.yourNumbers.isShared);
   }
 
 }

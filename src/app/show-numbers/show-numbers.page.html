@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Show Numbers</ion-title>
+    <ion-title>YOUR NUMBERS!</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="goBack($event)">
         BACK?
@@ -10,5 +10,45 @@
 </ion-header>
 
 <ion-content padding>
-
+  <div style="height:50px;width=100%">
+    <div style="width:50%;height:100%;display:inline-block;text-align:left;vertical-align:middle">
+      <strong>WELCOME!</strong>
+    </div>
+    <div style="width:25%;height:100%;display:inline-block">
+      <ion-button class="button button-block" style="white-space: normal;font-size:10pt;padding:3px;margin:3px;" color="{{yourNumbers.color}}" (click)="login()">Login</ion-button>
+    </div>
+    <div style="width:25%;height:100%;display:inline-block">
+      <ion-button class="button button-block" style="white-space: normal;font-size:10pt;padding:3px;margin:3px;" color="{{yourNumbers.color}}" (click)="logout()">Logout</ion-button>
+    </div>
+  </div>
+  <div style="height:50px;width=100%">
+    <div style="width:20%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">Username</span>
+    </div>
+    <div style="width:80%;height:100%;display:inline-block">
+      <input style="height:100%;width:100%" type="text" [(ngModel)]="yourNumbers.username" placeholder="Enter username"/>
+    </div>
+  </div>
+  <div style="height:50px;width=100%">
+    <div style="width:20%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">Password</span>
+    </div>
+    <div style="width:80%;height:100%;display:inline-block">
+      <input style="width:100%;height:100%" type="text" [(ngModel)]="yourNumbers.password" placeholder="Enter password"/>
+    </div>
+  </div>
+  <div style="width:100%">
+    <span #yourNumbersLoginStatus></span>
+  </div>
+  <div style="width:100%;height:75px;">
+    <div style="width:33%;height:100%;display:inline-block">
+      <ion-button class="button button-block" style="white-space: normal;font-size:10pt;padding:3px;margin:3px;" color="{{yourNumbers.color}}" (click)="getNumbers()">GET NUMBERS</ion-button>
+    </div>
+    <div style="width:33%;height:100%;display:inline-block;vertical-align:middle">
+      <label><input type="radio" name="yourNumbersOptions" [value]="true" [(ngModel)]="yourNumbers.isShared">Get Shared Numbers</label>
+    </div>
+    <div style="width:33%;height:100%;display:inline-block;vertical-align:middle">
+      <label><input type="radio" name="yourNumbersOptions" [value]="false" [(ngModel)]="yourNumbers.isShared">Get User's Numbers</label>
+    </div>
+  </div>
 </ion-content>

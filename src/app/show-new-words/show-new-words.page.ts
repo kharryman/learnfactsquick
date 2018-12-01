@@ -23,4 +23,14 @@ export class ShowNewWordsPage implements OnInit {
     this.showNewWords.days_before = 0;
   }
 
+  login(){
+  }
+  logout(){
+  }
+  getLastReview(){
+
+  }
+  getNextReview(){
+
+  }
 }

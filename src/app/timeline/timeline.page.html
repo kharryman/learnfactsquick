@@ -10,5 +10,64 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- LOGIN AND LOGOUT -->
+  <div style="height:50px;width=100%">
+    <div style="width:50%;height:100%;display:inline-block;text-align:left;vertical-align:middle">
+      <strong>LOGIN TO TIMELINE:</strong>
+    </div>
+    <div style="width:25%;height:100%;display:inline-block">
+      <ion-button class="button button-block" style="white-space: normal;font-size:10pt;padding:3px;margin:3px;" color="{{timeline.color}}" (click)="login()">Login</ion-button>
+    </div>
+    <div style="width:25%;height:100%;display:inline-block">
+      <ion-button class="button button-block" style="white-space: normal;font-size:10pt;padding:3px;margin:3px;" color="{{timeline.color}}" (click)="logout()">Logout</ion-button>
+    </div>
+  </div>
+  <div style="height:50px;width=100%">
+    <div style="width:20%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">Username</span>
+    </div>
+    <div style="width:80%;height:100%;display:inline-block">
+      <input style="height:100%;width:100%" type="text" [(ngModel)]="timeline.username" placeholder="Enter username"/>
+    </div>
+  </div>
+  <div style="height:50px;width=100%">
+    <div style="width:20%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">Password</span>
+    </div>
+    <div style="width:80%;height:100%;display:inline-block">
+      <input style="width:100%;height:100%" type="text" [(ngModel)]="timeline.password" placeholder="Enter password"/>
+    </div>
+  </div>
+  <! -- COMPLETED WITH SELECT -->
+  <div style="height:50px;width=100%">
+    <div style="width:80%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">COMPLETED:</span>
+    </div>
+    <div style="width:20%;height:100%;display:inline-block">
+      <select style="height:100%;width:100%" type="text"">
+        <option *ngFor="let complete in timeline.completed">{{complete.text}}</option>
+      </select>
+    </div>
+  </div>
+  <! -- SELECT NUMBER MAJOR WORDS PER NUMBER -->
+  <div style="height:50px;width=100%">
+    <div style="width:80%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">HOW MANY MAJOR WORDS FOR EACH NUMBER?</span>
+    </div>
+    <div style="width:20%;height:100%;display:inline-block">
+      <select style="height:100%;width:100%" type="text" [(ngModel)]="timeline.major_count">
+        <option *ngFor="let count in timeline.major_counts">{{count.text}}</option>
+      </select>
+    </div>
+  </div>
 
+
+  <div style="height:50px;width=100%">
+    <div style="width:20%;height:100%;display:inline-block;text-align:right">
+      <span style="margin-right:5px;">Password</span>
+    </div>
+    <div style="width:80%;height:100%;display:inline-block">
+      <input style="width:100%;height:100%" type="text" [(ngModel)]="showNewWords.password" placeholder="Enter password"/>
+    </div>
+  </div>
 </ion-content>
