@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { NavController} from '@ionic/angular';
-//import { SQLite, SQLiteDatabaseConfig } from '@ionic-native/sqlite';
-//import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+
 
 @Component({
   selector: 'app-anagram-generator',
@@ -12,8 +11,8 @@ export class AnagramGeneratorPage implements OnInit {
   anagrams:any;
   @ViewChild('anagramResults') anagramResults:ElementRef;
   //public database: SQLiteObject;
-  public invoices: Array<Object>;
-  public counter : number = 0;
+  //public invoices: Array<Object>;
+  //public counter : number = 0;
 
   constructor(private nav: NavController){}//, private sqlite : SQLite) { }
 

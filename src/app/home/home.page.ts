@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { Platform } from '@ionic/angular';
 
-import { SQLite, SQLiteObject, SQLiteDatabaseConfig} from '@ionic-native/sqlite';
+//import { SQLite, SQLiteObject, SQLiteDatabaseConfig} from '@ionic-native/sqlite';
 
 
 @Component({
@@ -22,14 +22,14 @@ export class HomePage implements OnInit, AfterViewInit{
   home:any;
   //myStorage:Storage;
   myShared:any;
-  private databaseReady: BehaviorSubject<boolean>;
-  public acrostics_database: SQLiteObject;
+  //private databaseReady: BehaviorSubject<boolean>;
+  //public acrostics_database: SQLiteObject;
   //public misc_database: SQLiteObject;
   public animals: Array<Object>;
   //public counter : number = 0;
 
-  constructor(public shared: ShareService, private nav: NavController, private platform: Platform, public popoverCtrl: PopoverController, public service:ShareService, public storage: Storage, private sqlite: SQLite, public sqlitePorter: SQLitePorter, private http: Http){
-    this.databaseReady = new BehaviorSubject(false);
+  constructor(public shared: ShareService, private nav: NavController, private platform: Platform, public popoverCtrl: PopoverController, public service:ShareService, public storage: Storage){//, private sqlite: SQLite, public sqlitePorter: SQLitePorter, private http: Http){
+    /*this.databaseReady = new BehaviorSubject(false);
     this.platform.ready().then(() => {
       console.log("home.page.ts constructor platform.ready called!");
       this.sqlite.create({
@@ -50,9 +50,11 @@ export class HomePage implements OnInit, AfterViewInit{
     });
     //this.myStorage = storage;
     //this.myShared = shared;
+    */
   }
 
   fillDatabase() {
+    /*
     this.http.get('assets/sql/acrostics.sql')
     .map(res => res.text())
     .subscribe(sql => {
@@ -75,6 +77,7 @@ export class HomePage implements OnInit, AfterViewInit{
     } )
     .catch(e => console.error(e));
   });
+  */
 }
 
 ngOnInit() {
